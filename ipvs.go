@@ -42,15 +42,15 @@ type ResponseHandler struct {
 }
 
 // Returns default IPVS handle parameters
-func DefaultIPVSHandleParams() IPVSHandleParams {
-	return IPVSHandleParams{loadModule: true}
+func DefaultIPVSHandleParams(loadModule bool) IPVSHandleParams {
+	return IPVSHandleParams{loadModule: loadModule}
 }
 
 // New provides a new ipvs handle with default params.
 // It will return a valid handle or an error in case an error occurred
 // while creating the handle.
-func New() (IPVSHandle, error) {
-	return NewIPVSHandle(DefaultIPVSHandleParams())
+func New(loadModule bool) (IPVSHandle, error) {
+	return NewIPVSHandle(DefaultIPVSHandleParams(loadModule))
 }
 
 // NewIPVSHandle provides a new ipvs handle with custom params.
